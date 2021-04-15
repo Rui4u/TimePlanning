@@ -27,15 +27,16 @@ struct SwiftUIViewClock: View {
                     Image("clock_dial_style_1")
                         .resizable(resizingMode: .stretch)
                         .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                    
-                    SwiftUIViewClockHandle(minAngle: $hourAngle, size: CGSize(width: 10, height: 40))
-                    SwiftUIViewClockHandle(minAngle: $minAngle, size: CGSize(width: 10, height: 50))
+                    let maxlenght = min(geometry.size.width, geometry.size.height)
+                    let line2Height = (maxlenght / 200) * 55
+                    SwiftUIViewClockHandle(minAngle: $hourAngle, size: CGSize(width: 10, height: line2Height))
+                    SwiftUIViewClockHandle(minAngle: $minAngle, size: CGSize(width: 10, height: line2Height))
                     Image("clock_round_style_1")
                         .resizable(resizingMode: .stretch)
-                        .frame(width: 15,height: 15)
+                        .frame(width: 10 + 4,height: 10 + 4)
                         .position(x: geometry.size.width/2, y: geometry.size.height/2)
                 }
-            }.padding()
+            }.padding(5)
         }.onReceive(timer) { time in
             self.changeTime(timeInterval: time.timeIntervalSince1970)
         }.onAppear() {
@@ -48,8 +49,9 @@ struct SwiftUIViewClock: View {
     
     func changeTime(timeInterval:Double) {
         self.dateModel = timeIntervalChangeToTimeStr(timeInterval: Date(timeIntervalSinceNow: 0).timeIntervalSince1970)
-        minAngle = Double(Int(self.dateModel!.date.minute) ?? 0 % 60) / 60 * 360
-        hourAngle = Double(Int(self.dateModel!.date.hour) ?? 0 % 12) / 12 * 360
+        let scal = Double(Int(self.dateModel!.date.minute) ?? 0 % 60) / 60
+        minAngle = scal * 360
+        hourAngle = Double(Int(self.dateModel!.date.hour) ?? 0 % 12) / 12 * 360 + (scal * 360 / 12)
     }
     
     func timeIntervalChangeToTimeStr(timeInterval:Double, _ dateFormat:String? = "yyyy-MM-dd HH:mm:ss") -> DateModel {
@@ -91,12 +93,10 @@ struct SwiftUIViewClockHandle: View {
     var size: CGSize
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                Image("clock_hand_style_1")
-                    .resizable(resizingMode: .stretch)
-                    .frame(width: size.width,height: size.height)
-                    .rotationEffect(Angle(degrees: minAngle),anchor: UnitPoint(x: 0.5, y: 1))
-            }
+            Image("clock_hand_style_1")
+                    .resizable()
+            .frame(width:size.width,height: size.height)
+            .rotationEffect(Angle(degrees: minAngle),anchor: UnitPoint(x: 0.5, y: 1))
             .position(CGPoint(x: geometry.size.width/2, y: geometry.size.height/2 - size.height/2))
         }
     }

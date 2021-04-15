@@ -31,7 +31,7 @@ struct WidgetItem1: View {
                     }.frame(height: 30)
                     ProgressView(value: /*@START_MENU_TOKEN@*/0.5/*@END_MENU_TOKEN@*/)
                     Spacer()
-                }.padding(10)
+                }
             })
         }
     }

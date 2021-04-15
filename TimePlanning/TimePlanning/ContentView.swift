@@ -15,47 +15,28 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-    @State var maxNum = 5
+    @State var viewsSource = [String]()
     @State var cols = [GridItem]()
     var body: some View {
-        
-        VStack {
-            SwiftUIViewClock().frame(width: 200, height: 200, alignment: .center)
-            HStack {
-                WidgetItem(columns: $cols, maxNum: $maxNum).frame(width: 300, height: 400)
+        GeometryReader { geometry in
+            VStack {
+                WidgetItem(columns: $cols, viewsSource: $viewsSource)
             }
-    //        }.frame(width:300,height: 500)
-            Button("点击我切换数据源") {
-                initializeTheData()
-            }.onAppear() {
+            .onAppear() {
                 initializeTheData()
             }
-            //        List {
-            //            ForEach(items) { item in
-            //                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            //            }
-            //            .onDelete(perform: deleteItems)
-            //        }
-            //        .toolbar {
-            //            #if os(iOS)
-            //            EditButton()
-            //            #endif
-            //
-            //            Button(action: addItem) {
-            //                Label("Add Item", systemImage: "plus")
-            //            }
-            //        }
         }
-        
     }
     
     private func initializeTheData() {
         self.cols = []
-        let index = 40
-        for _ in 0...index {
-            self.cols.append(GridItem(.fixed(15),spacing: 5))
+        let index = 2
+        for _ in 0..<index {
+            self.cols.append(GridItem(.flexible(),spacing: 5))
         }
-        self.maxNum = Int(arc4random() % 100) + 1
+        self.viewsSource.append("SwiftUIViewClock")
+        self.viewsSource.append("SwiftUIViewClock")
+        self.viewsSource.append("SwiftUIViewClock")
     }
     
    
