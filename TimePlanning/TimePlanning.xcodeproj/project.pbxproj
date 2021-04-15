@@ -16,6 +16,9 @@
 		2B127B62262723E800432513 /* TimePlanningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B127B61262723E800432513 /* TimePlanningTests.swift */; };
 		2B127B6D262723E800432513 /* TimePlanningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B127B6C262723E800432513 /* TimePlanningUITests.swift */; };
 		2B47345926272584009F672A /* WidgetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47345826272584009F672A /* WidgetItem.swift */; };
+		551347692627D6A200C01925 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551347682627D6A200C01925 /* Extension.swift */; };
+		551347712627F0CD00C01925 /* WidgetItem1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551347702627F0CD00C01925 /* WidgetItem1.swift */; };
+		551347762628034500C01925 /* SwiftUIViewClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551347752628034500C01925 /* SwiftUIViewClock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		2B127B6C262723E800432513 /* TimePlanningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePlanningUITests.swift; sourceTree = "<group>"; };
 		2B127B6E262723E800432513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B47345826272584009F672A /* WidgetItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItem.swift; sourceTree = "<group>"; };
+		551347682627D6A200C01925 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		551347702627F0CD00C01925 /* WidgetItem1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetItem1.swift; sourceTree = "<group>"; };
+		551347752628034500C01925 /* SwiftUIViewClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewClock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +107,12 @@
 		2B127B49262723E700432513 /* TimePlanning */ = {
 			isa = PBXGroup;
 			children = (
+				551347672627D69500C01925 /* Tools */,
 				2B127B4A262723E700432513 /* TimePlanningApp.swift */,
 				2B127B4C262723E700432513 /* ContentView.swift */,
 				2B47345826272584009F672A /* WidgetItem.swift */,
+				551347702627F0CD00C01925 /* WidgetItem1.swift */,
+				551347752628034500C01925 /* SwiftUIViewClock.swift */,
 				2B127B4E262723E800432513 /* Assets.xcassets */,
 				2B127B53262723E800432513 /* Persistence.swift */,
 				2B127B58262723E800432513 /* Info.plist */,
@@ -137,6 +146,14 @@
 				2B127B6E262723E800432513 /* Info.plist */,
 			);
 			path = TimePlanningUITests;
+			sourceTree = "<group>";
+		};
+		551347672627D69500C01925 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				551347682627D6A200C01925 /* Extension.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +288,9 @@
 				2B127B54262723E800432513 /* Persistence.swift in Sources */,
 				2B127B4D262723E700432513 /* ContentView.swift in Sources */,
 				2B127B4B262723E700432513 /* TimePlanningApp.swift in Sources */,
+				551347762628034500C01925 /* SwiftUIViewClock.swift in Sources */,
+				551347692627D6A200C01925 /* Extension.swift in Sources */,
+				551347712627F0CD00C01925 /* WidgetItem1.swift in Sources */,
 				2B47345926272584009F672A /* WidgetItem.swift in Sources */,
 				2B127B57262723E800432513 /* TimePlanning.xcdatamodeld in Sources */,
 			);

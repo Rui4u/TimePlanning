@@ -13,25 +13,25 @@ struct WidgetItem: View {
     var body: some View {
         ScrollView {
             GeometryReader { proxy in
-                LazyVGrid(columns: columns, content: {
-                    Print("\(maxNum)")
+                LazyVGrid(columns: columns,alignment:.leading, content: {
                     ForEach(0..<maxNum, id:\.self) { item in
                         ZStack {
-                            Print("\(item)")
                             Rectangle()
                                 .fill(Color.red)
-                            Text("\(item)")
-                        }
+                            Text("\(item)").font(Font.system(size: 10))
+                        }.frame(width: 20, height: 20, alignment: .center)
                     }
-                }).frame(width: proxy.size.width)
+                })
+                .frame(width: proxy.size.width)
             }
         }
     }
 }
 
-extension View {
-    func Print(_ vars: Any...) -> some View {
-        for v in vars { print(v) }
-        return EmptyView()
+struct WidgetItem_Previews: PreviewProvider {
+    @State static var a = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
+    @State static var b = Int(arc4random() % 100) + 1
+    static var previews: some View {
+        WidgetItem(columns:$a , maxNum:$b).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
