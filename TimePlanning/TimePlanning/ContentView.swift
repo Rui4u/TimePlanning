@@ -21,6 +21,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack {
                 WidgetItem(columns: $cols, viewsSource: $viewsSource)
+                SwiftUIViewPlanDefault().fixedSize().frame(width: 200, height: 200)
             }
             .onAppear() {
                 initializeTheData()
